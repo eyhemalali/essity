@@ -1,0 +1,47 @@
+@startuml
+class Lieferschein {
+kennzeichen : String
+erstwieaungTS : LocalDateTime
+erstwiegungsGewicht : Long
+ZweitwiegunasTS : LocatDateTime
+ZweitwiegnunasGewicht : tong
+taraGewicht : Long
+qualitaet : Qualitaet
+bezeichnung : String
+}
+
+class Spedition {
+name : String
+adresse: Adresse
+telefonNumner : String
+}
+
+class Lieferfirma {
+name : String
+adresse: Adresse
+telefonNummer : String
+}
+
+class Adresse <<value object>> {
+strasseNummer : String
+Plz ; String
+ort : String
+Country : String
+}
+enum Qualitaet {
+MINDERWERTIG,
+NARMAL,
+GUT,
+EXCELLENT
+}
+
+Lieferschein "0..1" -down- "1" Spedition
+Lieferschein "0..1" -right- "1" Lieferfirma
+Lieferschein -up- Qualitaet
+Lieferfirma -down- Adresse
+Spedition -right- Adresse
+
+
+@enduml
+
+
